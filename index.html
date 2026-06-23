@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>סימולטור מבחן ממשלתי - מכונות חשמל 14778</title>
     <link rel="icon" href="engine-icon.png">
-<link rel="apple-touch-icon" href="engine-icon.png">
+    <link rel="apple-touch-icon" href="engine-icon.png">
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; margin: 0; padding: 20px; }
         .container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
@@ -19,7 +19,7 @@
         button:hover { background-color: #1557b0; }
         .btn-restart { background-color: #34a853; margin-top: 20px; }
         .btn-restart:hover { background-color: #2b8240; }
-        #results { margin-top: 40px; padding: 20px; background-color: #e8eaed; border-radius: 8px; display: none; }
+        #results { margin-top: 20px; padding: 20px; background-color: #e8eaed; border-radius: 8px; display: none; }
         .mistake-box { background-color: #fff; padding: 15px; border-right: 5px solid #d93025; margin-bottom: 15px; border-radius: 4px; }
         .wrong-ans { color: #d93025; font-weight: bold; }
         .correct-ans { color: #1e8e3e; font-weight: bold; }
@@ -31,13 +31,15 @@
 
     <div class="container">
         <h1>סימולטור מבחן ממשלתי - מכונות חשמל 14778</h1>
+        
         <div id="quiz-container"></div>
         <button id="submit-btn" onclick="submitQuiz()">הגש מבחן וקבל ציון</button>
+        
         <div id="results"></div>
     </div>
 
     <script>
-        // המאגר המלא - 162 שאלות
+        // המאגר המלא - 164 שאלות
         const questionBank = [
             { q: 'מנוע טורי לזרם ישר מחובר למתח של 220 וולט והספקו הנקוב על הגל הוא 41.3 כוחות-סוס, במהירות 1,200 סל"ד. חשב את מומנט הסיבובי הנקוב על הגל.', options: ["260.43 N.m", "150.8 N.m", "241.9 N.m", "39.4 Kg*m"], ans: 2, img: "" },
             { q: 'מנוע טורי לזרם ישר מחובר למתח של 220 וולט והספקו הנקוב על הגל הוא 41.3 כוחות-סוס, במהירות 1,200 סל"ד. חשב נצילות המנוע אם הוא צורך זרם של 160 אמפר מהרשת.', options: ["92.4%", "84%", "90.6%", "86.4%"], ans: 3, img: "" },
@@ -201,7 +203,7 @@
             { q: 'מומנט אלקטרומגנטי במנוע הוא 220Nm. הפסדי חיכוך 1.5KW. מהירות סיבוב 1,410 סל"ד. המומנט על הגל הוא:', options: ["227.2 Nm", "209.84 Nm", "200.02 Nm", "188.02 Nm"], ans: 1, img: "" },
             { q: 'מהי הקביעה הנכונה ביחס למנוע השראה תלת מופעי אסינכרוני?', options: ["ככל שמהירות הסיבוב עולה, תדירות הזרם ברוטור גדלה.", "ככל שמהירות הסיבוב עולה, תדירות הזרם ברוטור קטנה (f2=s*f1).", "ההפסדים ברוטור קבועים ללא קשר לעומס.", "מומנט ההתנעה של מנוע ללא עומס גדול מהמומנט הקריטי."], ans: 1, img: "" },
             { q: 'הפסדי הנחושת ברוטור של מנוע השראה הם 1,500W. הפסדי חיכוך 750W. המנוע מסתובב ב-705 סל"ד. המומנט על הגל יהיה:', options: ["10.15 Nm", "30.47 Nm", "308.17 Nm", "1585 Nm"], ans: 2, img: "" },
-	    { q: 'באיורים א\', ב\', ג\', ד\' מצוינים כיווני הזרם המושרה במוליכי הרוטור של מנוע השראתי תלת-מופעי בעל רוטור כלוב. בהתאם למיקומם של הקטבים המגנטיים ולכיוון סיבובם, קבע את האיור הנכון:', options: ["איור א'", "איור ב'", "איור ג'", "איור ד'"], ans: 1, img: "q163.png" },
+            { q: 'באיורים א\', ב\', ג\', ד\' מצוינים כיווני הזרם המושרה במוליכי הרוטור של מנוע השראתי תלת-מופעי בעל רוטור כלוב. בהתאם למיקומם של הקטבים המגנטיים ולכיוון סיבובם, קבע את האיור הנכון:', options: ["איור א'", "איור ב'", "איור ג'", "איור ד'"], ans: 1, img: "q163.png" },
             { q: 'מהו כיוון הכוח הפועל על מוליכי הרוטור נושאי זרם בהתאם למצב הרגעי שבאיור?', options: ["לאורכו של המוליך, פנימה.", "לאורכו של המוליך, החוצה.", "ב-90 מעלות למוליך, עם כיוון השעון.", "ב-90 מעלות למוליך, נגד כיוון השעון."], ans: 3, img: "q164.png" }
         ];
 
@@ -307,22 +309,32 @@
 
             const resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = resultsHtml;
-            resultsDiv.style.display = 'block';
             
-            // הסתרת כפתור "הגש מבחן" כדי שלא יילחץ פעמיים
+            // הסתרת אזור השאלות כדי לדמות "דף נפרד"
+            document.getElementById('quiz-container').style.display = 'none';
+            
+            // הסתרת כפתור "הגש מבחן"
             document.getElementById('submit-btn').style.display = 'none';
             
-            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+            // הצגת אזור התוצאות
+            resultsDiv.style.display = 'block';
+            
+            // גלילה חלקה לראש הדף
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // פונקציה חדשה לאיפוס המבחן
         function resetQuiz() {
             // הסתרת אזור התוצאות
             document.getElementById('results').style.display = 'none';
-            // החזרת כפתור ההגשה המקורי
+            
+            // החזרת אזור השאלות וכפתור ההגשה המקורי
+            document.getElementById('quiz-container').style.display = 'block';
             document.getElementById('submit-btn').style.display = 'block';
+            
             // הגרלת שאלות מחדש ובניית המבחן
             initQuiz();
+            
             // גלילה חזרה לתחילת הדף
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
