@@ -1,0 +1,13 @@
+{
+  "name": "סימולטור 14778",
+  "short_name": "מכונות חשמל",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "engine-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
