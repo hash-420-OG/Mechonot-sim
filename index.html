@@ -42,6 +42,7 @@
         
         #results { margin-top: 20px; padding: 20px; background-color: #e8eaed; border-radius: 8px; display: none; }
         .mistake-box { background-color: #fff; padding: 15px; border-right: 5px solid #d93025; margin-bottom: 15px; border-radius: 4px; }
+        .correct-box { background-color: #fff; padding: 15px; border-right: 5px solid #1e8e3e; margin-bottom: 15px; border-radius: 4px; }
         .wrong-ans { color: #d93025; font-weight: bold; margin: 5px 0; }
         .correct-ans { color: #1e8e3e; font-weight: bold; margin: 5px 0; }
         .score-pass { color: #1e8e3e; text-align: center; }
@@ -344,6 +345,7 @@
             let resultsHtml = '<h2>סיכום ותוצאות המבחן</h2>';
             let mistakesHtml = '';
             let unansweredHtml = '';
+            let correctHtml = ''; // אזור חדש לתשובות נכונות
 
             selectedQuestions.forEach((sq, index) => {
                 const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
@@ -352,6 +354,12 @@
                     const userAns = parseInt(selectedOption.value);
                     if (userAns === sq.ans) {
                         correctAnswersCount++;
+                        // הוספת השאלה לקטגוריית "תשובות נכונות"
+                        correctHtml += `
+                        <div class="correct-box">
+                            <p><strong>${sq.q}</strong></p>
+                            <p class="correct-ans">התשובה הנכונה: ${sq.options[sq.ans]}</p>
+                        </div>`;
                     } else {
                         mistakesHtml += `
                         <div class="mistake-box">
@@ -385,6 +393,12 @@
             if (unansweredHtml !== '') {
                 resultsHtml += `<h3>שאלות שלא נענו:</h3>${unansweredHtml}`;
             }
+            
+            // הצגת התשובות הנכונות בסוף
+            if (correctHtml !== '') {
+                resultsHtml += `<h3>תשובות נכונות שענית:</h3>${correctHtml}`;
+            }
+
             if (mistakesHtml === '' && unansweredHtml === '') {
                 resultsHtml += `<h3 style="color:#1e8e3e;">כל הכבוד! ענית נכון על כל השאלות!</h3>`;
             }
