@@ -380,7 +380,7 @@
             const totalQuestions = selectedQuestions.length;
             const finalScore = Math.round((correctAnswersCount / totalQuestions) * 100);
             
-            if (finalScore >= 55) {
+            if (finalScore >= 60) {
                 resultsHtml += `<h1 class="score-pass">ציון סופי: ${finalScore} - עברת! 🎉</h1>`;
             } else {
                 resultsHtml += `<h1 class="score-fail">ציון סופי: ${finalScore} - נכשלת. לא נורא, ממשיכים לתרגל! 💪</h1>`;
